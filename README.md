@@ -12,18 +12,18 @@ The initial purpose of this module is to allow kernel_parameter resources to be 
 
 ### Class: kernel_parameter
 
-Providing a Hash to the *parameters* parameter will define kernel_parameter resources.  The example below will add `vm.swappiness = 0` to /etc/kernel_parameter.conf and execute `kernel_parameter -w vm.swappiness=0`.
+Providing a Hash to the *values* parameter will define kernel_parameter resources.  The example below will add `elevator=deadline` to your Kernel's boot optoins.
 
     class { 'kernel_parameter':
       values  => {
-        'vm.swappiness' => { 'value' => '0' },
+        'elevator' => { 'value' => 'deadline' },
       },
     }
 
 The top-scope variable *kernel_parameter_values* can also be used to define kernel_parameter resources as long as the kernel_parameter class is included.
 
     $kernel_parameter_values  = {
-      'vm.swappiness' => { 'value' => '0' },
+      'elevator' => { 'value' => 'deadline' },
     }
 
 ## Development
